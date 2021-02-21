@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        h1{
+            text-align:center;
+            color:orange;
+            text-shadow: 2px 2px 5px pink;
+        }
+        body{
+            background:url(https://cdn.pixabay.com/photo/2017/12/15/13/51/polynesia-3021072__480.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        button{
+            margin:10px 593px;
+            background-color: bisque;
+            padding: 5px;
+            border-radius: 2px;
+            outline: none;
+        }
+        ul{
+            border:1px solid black;
+            width:80%;
+            height: auto;
+            background-color: cornsilk;
+            margin: auto;
+        }
+        li{
+            color:rgb(2, 61, 255);
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+   <h1>Joke App</h1>
+   <hr>
+   <button id="btn">Click Me!</button>
+    <ul>
+        <li id="data"></li>
+    </ul>
+     <script>
+         let btn=document.getElementById("btn");
+         
+         const getDadJoke=async ()=>{
+             const config={headers:{Accept:"application/json"}};
+             const res=await axios.get("https://icanhazdadjoke.com/",config);
+            //  console.log(res);
+            //  console.log(res.data.joke);
+            let data= document.getElementById("data");
+             data.innerText=res.data.joke;
+         }
+         btn.addEventListener('click',getDadJoke);
+     </script>
+</body>
+</html>
