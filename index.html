@@ -40,19 +40,20 @@
    <h1>Joke App</h1>
    <hr>
    <button id="btn">Click Me!</button>
-    <ul>
+    <ul id="ul">
         <li id="data"></li>
     </ul>
      <script>
          let btn=document.getElementById("btn");
-         
+         let ul=document.getElementById("ul")
          const getDadJoke=async ()=>{
              const config={headers:{Accept:"application/json"}};
              const res=await axios.get("https://icanhazdadjoke.com/",config);
             //  console.log(res);
             //  console.log(res.data.joke);
-            let data= document.getElementById("data");
-             data.innerText=res.data.joke;
+            let data= document.createElement("LI");
+             data.append(res.data.joke);
+             ul.append(data);
          }
          btn.addEventListener('click',getDadJoke);
      </script>
